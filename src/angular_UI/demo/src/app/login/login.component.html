@@ -1,0 +1,69 @@
+<div class="navbar">
+  <div class="logo">
+    <img src="src\angular_UI\demo\src\assets\documentation.png" alt="Icon">
+    <h1>Doc Management System</h1>
+  </div>
+</div>
+
+<div class="bg">
+  <mat-card class="loginform">
+    <mat-card-content>
+      <header>
+        <h2>
+          <span class="create-account-heading">Create your account</span>
+        </h2>
+        
+      </header>
+
+
+      <form (ngSubmit)="employeeRegister()">
+        <div class="form-group">
+          <label for="name" class="name-label">Full Name:</label>
+          <input type="text" class="form-control" id="name" name="name" [(ngModel)]="employee.name" placeholder="John Doe" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email" class="name-label">Email Address:</label>
+          <input type="email" class="form-control" id="email" name="email" [(ngModel)]="employee.emailId" placeholder="johndoe@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="employeeid" class="name-label">Employee ID:</label>
+          <input type="number" class="form-control" id="employeeid" name="employeeid" [(ngModel)]="employee.employeeid" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password" class="name-label">Password:</label>
+          <input type="password" class="form-control" id="password" name="password" [(ngModel)]="employee.password" required>
+        </div>
+
+        <div class="form-group">
+          <label for="position" class="name-label">Position:</label>
+          <input type="text" class="form-control" id="position" name="position" [(ngModel)]="employee.position" placeholder="Software Engineer">
+        </div>
+
+        <div class="form-group">
+          <label for="department" class="name-label">Department:</label>
+          <input type="text" class="form-control" id="department" name="department" [(ngModel)]="employee.department" placeholder="Engineering">
+        </div>
+
+        <div class="form-group">
+          <label for="role" class="name-label">Role:</label>
+          <input type="text" class="form-control" id="role" name="role" [(ngModel)]="employee.role" placeholder="Team Lead">
+        </div>
+
+        <div class="form-group">
+          <label for="contact-no" class="name-label">Contact Number:</label>
+          <input type="tel" class="form-control" id="contact-no" name="contact_no" [(ngModel)]="employee.contact_no" placeholder="123-456-7890">
+        </div>
+
+        <div class="form-group">
+          <label for="profilePic" class="name-label">Profile Picture:</label>
+          <input type="file" id="profilePic" name="profile" class="form-control" [(ngModel)]="employee.profile">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Account</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

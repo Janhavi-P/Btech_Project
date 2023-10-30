@@ -1,0 +1,122 @@
+/* Styles for the horizontal navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #007bff; /* Background color for the navbar */
+  color: #fff; /* Text color for the navbar */
+  padding: 10px 20px;
+  /* Add the following styles to make it stick to the top of the page */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  height: 20px; /* Adjust the height to your preference */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 40px; /* Adjust the size of the icon as needed */
+  height: 40px;
+  margin-right: 10px;
+}
+
+.logo h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Style for the "Create your account" heading */
+.create-account-heading {
+  background-color: #007bff; /* Background color */
+  color: #fff; /* Text color */
+  font-weight: bold; /* Bold text */
+  padding: 5px 10px; /* Add padding for spacing */
+  border-radius: 5px; /* Rounded corners */
+  display: inline; /* Display inline for text */
+}
+/* Styles for the content */
+.bg {
+  width: 100%;
+  min-height: calc(100vh - 60px); /* Subtract the navbar height to prevent scrolling */
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-direction: column; /* Center content vertically */
+  /* Adjust the min-height to fill the remaining viewport height after the navbar */
+  min-height: calc(100vh - 60px); /* Subtract the navbar height */
+  overflow: hidden; /* Hide vertical scrollbar */
+  flex-direction: column; /* Center content vertically */
+}
+
+/* The rest of your existing styles for the form and input fields can remain the same. */
+
+/* Updated CSS for horizontal alignment and no scrollbar */
+.bg {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f0f0f0; /* Light gray background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.loginform {
+  width: 60%; 
+  padding: 20px;
+  border: 2px solid #007bff;
+  border-radius: 10px;
+  background-color: #fff; /* White background */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: #333;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Style the labels */
+.name-label {
+  font-weight: bold;
+  width: 30%;
+  text-align: left;
+  margin-bottom: 5px;
+  color: #007bff;
+}
+
+/* Style the input fields */
+.form-control {
+  width: 65%;
+  border: none;
+  background: transparent;
+  padding: 8px 10px;
+  border-bottom: 2px solid #007bff;
+  margin: 10px 0;
+  color: #333;
+}
+
+/* Style the submit button */
+button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 24px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
