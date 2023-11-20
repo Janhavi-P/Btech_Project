@@ -1,0 +1,31 @@
+
+
+    <mat-toolbar color="primary" class="mat-elevation-z6 custom-toolbar">
+        <mat-icon>description</mat-icon>
+        <span>Doc Management System</span>
+        <div class="spacer"></div>
+        <a mat-button class="navbtn1">Docs Analysis</a>
+        <a mat-button routerLink="/getusers" class="navbtn2">Users</a>
+        <!-- <a mat-button class="navbtn3"></a> -->
+        <span>{{loggedInUser}}</span>
+        <div>
+            <button mat-button>
+              <img [src]="profilePictureUrl" alt="Profile Picture" class="circular-image" />
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item class="edit-profile-button" [routerLink]="['/edit-profile', getLoggedInId()]">
+                Edit Profile
+              </button>
+              <button mat-menu-item>Logout</button>
+            </mat-menu>
+              
+          </div>
+        	<button mat-button [matMenuTriggerFor]="menu"><mat-icon>keyboard_arrow_down</mat-icon></button>
+    </mat-toolbar>
+ <div class="bg"></div>
+    <!-- <input type="file" (change)="onFileChanged($event)" multiple/>
+    <button (click)="onUpload()">Upload File</button>
+    <p>{{ message }}</p>
+    <router-outlet>
+    <button (click)="navigateToFileList()">Go to File List</button>
+    </router-outlet>  -->

@@ -1,0 +1,11 @@
+
+<div class="folder-container">
+    <ul>
+      <li *ngFor="let folder of folders" class="folder-item">
+        <input type="checkbox" [(ngModel)]="folder.isChecked">
+        <span class="folder-name">{{ folder.name }}</span>
+        <span class="timestamp">{{ folder.timestamp }}</span>
+      </li>
+    </ul>
+  </div>
+  

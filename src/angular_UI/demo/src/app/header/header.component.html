@@ -1,0 +1,23 @@
+
+<nav class="navbar navbar-expand navbar-dark bg-primary px-2">
+    <div class="side-nav-button p-2 me-3 text-light" (click)="SideNavToggle()">
+        <i class="fa-solid fa-bars">
+
+        </i>
+    </div>
+    <form class="d-flex me-5">
+        <input class="form-control me-2" type="search" placeholder="Search">
+        <button class="btn btn-outline-light" type="submit">Search</button>
+    </form>
+    <div class="profile-logo dropdown menu">
+        <button class="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" data-bs-target="dropdownMenu">
+            User
+        </button>
+        <ul class="dropdown-menu dropdown-menu-dark" id="dropdownMenu">
+            <li><a href="#" class="dropdown-item">Signup</a></li>
+            <li><a href="#" class="dropdown-item">Login</a></li>
+            <li><a href="#" class="dropdown-item">View Profile</a></li>
+            <li><a href="#" class="dropdown-item">Logout</a></li>
+        </ul>
+    </div>
+</nav>

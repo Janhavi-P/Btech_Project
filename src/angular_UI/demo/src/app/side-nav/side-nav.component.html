@@ -1,0 +1,22 @@
+<div class="side-nav-content">
+    <ul class="nav-list"[ngClass]="{'nav-list-open': sideNavStatus}">
+        <li class="nav-list-item" *ngFor="let item of list">
+            <i class="{{item.icon}} border-black"></i>
+            <span>
+                <a href="#">{{item.name}}</a>
+            </span>
+        </li>
+    </ul>
+</div>
+<!-- <div class="container-fluid g-0">
+    <app-header (sideNavToggled)="sideNavStatus = $event;"></app-header>
+    <main>
+      <app-side-nav [sideNavStatus]= "sideNavStatus" [ngClass]="{'app-side-nav-open': sideNavStatus}"></app-side-nav>
+        <div class="display-area p-3" [ngClass]="{'display-area-shrink': sideNavStatus}">
+          <p class="fs-1 fw-bold fst-italic"></p>
+        </div>
+        
+    </main>
+  </div> -->
+  
+  

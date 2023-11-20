@@ -1,0 +1,73 @@
+<!-- <div class="navbar">
+  <div class="logo">
+    <img src="src\angular_UI\demo\src\assets\documentation.png" alt="Icon">
+    <h1>Doc Management System</h1>
+  </div>
+</div> -->
+<div class="outer"></div>
+<div class="bg">
+  <mat-card class="loginform">
+    <mat-card-content>
+      <header>
+        <h3>
+          <span class="create-account-heading">Edit your profile</span>
+        </h3>
+      </header>
+
+
+      <form (ngSubmit)="editProfile()">
+        <div class="form-group1">
+          <label for="name" class="name-label1">Full Name :</label>
+          <input type="text" class="form-control1" id="name" name="name" [(ngModel)]="employee.name" placeholder="John Doe" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email" class="name-label2">Email Address :</label>
+          <input type="email" class="form-control2" id="email" name="email" [(ngModel)]="employee.emailId" placeholder="johndoe@example.com" required>
+        </div>
+
+        <!-- <div class="form-group">
+          <label for="employeeid" class="name-label3">Employee ID :</label>
+          <input type="number" class="form-control3" id="employeeid" name="employeeid" [(ngModel)]="employee.employeeid" required>
+        </div> -->
+
+        <!-- <div class="form-group">
+          <label for="password" class="name-label4">Password :</label>
+          <input type="password" class="form-control4" id="password" name="password" [(ngModel)]="employee.password" required placeholder="*****">
+        </div> -->
+
+        <div class="form-group">
+          <label for="position" class="name-label5">Position :</label>
+          <input type="text" class="form-control5" id="position" name="position" [(ngModel)]="employee.position" placeholder="Software Engineer">
+        </div>
+
+        <div class="form-group">
+          <label for="department" class="name-label6">Department :</label>
+          <input type="text" class="form-control6" id="department" name="department" [(ngModel)]="employee.department" placeholder="Engineering">
+        </div>
+
+        <!-- <div class="form-group">
+              <label for="role" class="name-label7">Role :</label>
+      <select class="form-control7" id="role" name="role" [(ngModel)]="employee.role" >
+        <option value="admin" class="options">Admin</option>
+        <option value="user" class="options">Employee</option>
+      </select>
+        </div> -->
+
+        <div class="form-group">
+          <label for="contact-no" class="name-label8">Contact Number :</label>
+          <input type="tel" class="form-control8" id="contact-no" name="contact_no" [(ngModel)]="employee.contact_no" placeholder="123-456-7890">
+        </div>
+
+        <div class="form-group">
+          <label for="profilePic" class="name-label9">Profile Picture:</label>
+          <input type="file" id="profilePic" name="profile" (change)="onFileSelected($event)" class="form-control9" #profilePicInput>
+</div>
+
+<button (click)="goBack()" class="btn1">Back to home screen</button>
+        <button type="submit" class="btn ">Edit</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  
+</div>

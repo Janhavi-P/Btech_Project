@@ -1,0 +1,43 @@
+<div class="bg2"></div>
+<div class="outer"></div>
+  <!-- <mat-toolbar color="primary" class="mat-elevation-z6">
+      <div class="toolbar-content">
+        <mat-icon>description</mat-icon>
+        <span>Doc Management System</span>
+      </div>
+    </mat-toolbar>
+   -->
+    <div class="bg">
+      <header class="title">
+          <h3>
+            <span class="create-account-heading"><b>Login/Signup</b></span>
+          </h3>
+        </header>
+        <form (ngSubmit)="employeeLogin()">
+          <div class="form-group">
+            <label for="name" class="name-label1">Username</label>
+            <input type="email" class="form-control1" id="name" name="name" placeholder="johndoe@gmail.com" required [(ngModel)]="emailId">
+          </div>
+
+          <div class="form-group">
+            <label for="password" class="name-label2">Password</label>
+            <input type="password" class="form-control2" id="password" name="password"  required [(ngModel)]="password" placeholder="*********">
+          </div>
+          <button type="submit" class="btn">Login</button>
+        </form>
+        <!-- <div class="newacc">
+          Create new account?
+        </div>
+        <div class="forgotpass">
+          Forgot password?
+        </div> -->
+        <div class="newacc">
+           <a routerLink="/create-account" class="custom-link">Create new account?</a>
+        </div>
+        <div class="forgotpass">
+          Forgot password?
+          
+        </div>
+               
+    </div>
+    <router-outlet></router-outlet>

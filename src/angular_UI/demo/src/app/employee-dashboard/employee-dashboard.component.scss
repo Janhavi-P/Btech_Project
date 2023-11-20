@@ -1,0 +1,111 @@
+// .bg{
+//   background-color: rgba(188, 196, 203,0.8);
+//   height: 91vh;
+//     width: 100vw;
+//     background-image: url('../adminDashboard/login5.png');
+//     background-size: cover; /* Adjust the sizing to your preference */
+//     background-position: center; /* Center the background image */
+//     background-repeat: no-repeat; /* Prevent the image from repeating */
+// }
+.bg {
+    height:90vh;
+    width: 100vw;
+    background-image: url('../adminDashboard/login5.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+  
+  .bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(175, 195, 215, 0.8); /* Gray color with transparency */
+  }
+  
+  .custom-toolbar {
+    background: linear-gradient(rgba(2, 39, 76, 0.7), rgba(2, 39, 76, 0.5)), url('../login/login5.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* To keep the image fixed while scrolling */
+    color: #fff; /* Text color for contrast */
+    height: 10vh;
+  }
+  
+  .spacer{
+    flex: 1 1 auto;
+  }
+  .navbtn {
+    background-color: rgba(188, 196, 203, 0.8); /* Set the desired background color */
+  color: #fff;
+    padding: 10px 15px; /* Adjust padding for square box size */
+    //border-radius: px; /* Optional: Add rounded corners */
+    margin-right: 10px; /* Add some spacing between buttons */
+    text-decoration: none; /* Remove underlines from links */
+  }
+  
+  .navbtn:last-child {
+    margin-right: 0; /* Remove the right margin for the last button */
+  }
+  .navbtn3{
+    position: relative;
+    color: #fff;
+    left: 0.5%;
+    top: 8%;
+    background-image: url('../adminDashboard/user.png');
+    background-size: 40px 40px; /* Adjust the width and height as needed */
+    width: 50px; /* Set the width of the button */
+    height: 50px; /* Set the height of the button */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    //filter: brightness(8) contrast(9); /* Adjust values as needed for desired boldness */
+  
+   //background-color: rgb(192, 188, 188); /* Set the background color to white */
+  }
+  .navbtn1 mat-icon {
+    fill: white; /* Set the icon color to white */
+  }
+  .navbtn1:hover,.navbtn2:hover{
+    background-color: rgba(2, 39, 76);
+  }
+  .navbtn1{
+    background-color: rgba(188, 196, 203, 0.8); /* Set the desired background color */
+  color: #fff;
+    //padding: 10px 15px; /* Adjust padding for square box size */
+    //border-radius: px; /* Optional: Add rounded corners */
+    //margin-right: 10px; /* Add some spacing between buttons */
+    text-decoration: none; /* Remove underlines from links */
+    position: relative;
+    left: -20%;
+  }
+  .navbtn2{
+    background-color: rgba(188, 196, 203, 0.8); /* Set the desired background color */
+    color: #fff;
+    position: relative;
+    left: -18%;
+   // background-color: rgb(154, 150, 150); /* Set the background color to white */
+  }
+  .circular-image {
+    position: relative;
+    top: 4px;
+    width: 60px; /* Set your desired width */
+    height: 60px; /* Set your desired height */
+    border-radius: 50%; /* Makes the image circular */
+    object-fit: cover; /* Maintains the aspect ratio and covers the container */
+  }
+  /* styles.scss */
+
+.edit-profile-button {
+  color: #ffffff; /* Text color */
+  background-color: rgba(2, 39, 76); /* Background color */
+ // padding: 15px 10px; /* Adjust padding as needed */
+  //border-radius: 4px; /* Adjust border radius as needed */
+  cursor: pointer;
+}
+
+.edit-profile-button:hover {
+  background-color: #81b1e8; /* Change background color on hover */
+}

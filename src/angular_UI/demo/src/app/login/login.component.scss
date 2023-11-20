@@ -1,19 +1,19 @@
 /* Styles for the horizontal navbar */
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #007bff; /* Background color for the navbar */
-  color: #fff; /* Text color for the navbar */
-  padding: 10px 20px;
-  /* Add the following styles to make it stick to the top of the page */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1;
-  height: 20px; /* Adjust the height to your preference */
-}
+  // .navbar {
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: space-between;
+  //   background-color: #007bff; /* Background color for the navbar */
+  //   color: #fff; /* Text color for the navbar */
+  //   padding: 10px 20px;
+  //   /* Add the following styles to make it stick to the top of the page */
+  //   position: fixed;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   z-index: 1;
+  //   height: 20px; /* Adjust the height to your preference */
+  // }
 
 .logo {
   display: flex;
@@ -33,12 +33,30 @@
 }
 
 /* Style for the "Create your account" heading */
+.outer{
+  position: fixed;
+  top: 14%;
+  left: 17.5%;
+  width:65vw;
+  height:71vh;
+  background-color:  rgba(175, 195, 215, 0.8);
+}
 .create-account-heading {
-  background-color: #007bff; /* Background color */
-  color: #fff; /* Text color */
+  position: fixed;
+  top:15%;
+  left:20%;
+  position:fixed;
+  
+  width:58.7vw;
+  text-align: center;
+ // background-color: rgba(188, 196, 203, 0.8); /* Background color */
+  color: rgba(2, 39, 76, 0.8);  /* Text color */
+  border-radius: 1px; /* Rounded corners */
+//  background-color: #d7d7d8; /* Background color */
+  // color: rgb(255, 255, 255); /* Text color */
   font-weight: bold; /* Bold text */
   padding: 5px 10px; /* Add padding for spacing */
-  border-radius: 5px; /* Rounded corners */
+  //border-radius: 4px; /* Rounded corners */
   display: inline; /* Display inline for text */
 }
 /* Styles for the content */
@@ -55,27 +73,23 @@
   min-height: calc(100vh - 60px); /* Subtract the navbar height */
   overflow: hidden; /* Hide vertical scrollbar */
   flex-direction: column; /* Center content vertically */
+  background-image: url('../login/login5.png'); /* Set the path to your image */
+  background-size: cover; /* Adjust the sizing to your preference */
+  background-position: center; /* Center the background image */
+  z-index: -1; /* Place the background behind other content */
+  width: 100%;
+  height: 100%;
 }
 
 /* The rest of your existing styles for the form and input fields can remain the same. */
 
-/* Updated CSS for horizontal alignment and no scrollbar */
-.bg {
-  width: 100%;
-  min-height: 100vh;
-  background-color: #f0f0f0; /* Light gray background */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
 .loginform {
   width: 60%; 
   padding: 20px;
-  border: 2px solid #007bff;
-  border-radius: 10px;
-  background-color: #fff; /* White background */
+  border: 2px solid #022f60;
+  
+height: 60%;
+  background-color: rgba(2, 39, 76, 0.9); /* White background */
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   text-align: center;
   color: #333;
@@ -107,10 +121,13 @@
 
 /* Style the submit button */
 button[type="submit"] {
-  background-color: #007bff;
-  color: #fff;
+  position: fixed;
+  top: 68%;
+  left: 44%;
+  background-color: #9fa0a1;
+  color: #101010;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   padding: 12px 24px;
   cursor: pointer;
   font-weight: bold;
@@ -118,5 +135,171 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #0056b3;
+  //background-color: rgba(188, 196, 203, 0.8);
+  background-color: #7daadd;
+}
+.name-label1{
+  position: fixed;
+  left: 25%;
+ // font-weight: bold;
+ top: 26%;
+  color: #fafbfc;
+}
+.form-control1{
+  width: 50%;
+  border: none;
+  background: transparent;
+  padding: 8px 10px;
+  border-bottom: 2px solid #007bff;
+  position: relative;
+  left:-70%;
+  top: -2.3vh;
+  color: #ffffff;
+}
+.name-label2{
+  position: fixed;
+  left: 50%;
+ // font-weight: bold;
+ top: 26%;
+  color: #fafbfc;
+}
+.form-control2{
+  width: 50%;
+  border: none;
+  background: transparent;
+  padding: 8px 10px;
+  border-bottom: 2px solid #007bff;
+  position: relative;
+  left:75%;
+  top: -7.3vh;
+  color: #ffffff;
+}
+.name-label3{
+  position: fixed;
+  left: 25%;
+ // font-weight: bold;
+ top: 34.5%;
+  color: #fafbfc;
+}
+.form-control3{
+  width: 50%;
+  border: none;
+  background: transparent;
+  padding: 8px 10px;
+  border-bottom: 2px solid #007bff;
+  position: relative;
+  left:-70%;
+  top: -3.1vh;
+  color: #ffffff;
+}
+.name-label4{
+  position: fixed;
+  left: 50%;
+ // font-weight: bold;
+ top: 34.5%;
+  color: #fafbfc;
+}
+.form-control4{
+  width: 50%;
+  border: none;
+  background: transparent;
+  padding: 8px 10px;
+  border-bottom: 2px solid #007bff;
+  position: relative;
+  left:75%;
+  top: -7.3vh;
+  color: #ffffff;
+}
+.name-label5{
+  position: fixed;
+  left: 25%;
+ // font-weight: bold;
+ top: 44%;
+  color: #fafbfc;
+}
+.form-control5{
+  width: 50%;
+  border: none;
+  background: transparent;
+  padding: 8px 10px;
+  border-bottom: 2px solid #007bff;
+  position: relative;
+  left:-70%;
+  top: -2.4vh;
+  color: #ffffff;
+}
+.name-label6{
+  position: fixed;
+  left: 50%;
+ // font-weight: bold;
+ top: 44%;
+  color: #fafbfc;
+}
+.form-control6{
+  width: 50%;
+  border: none;
+  background: transparent;
+  padding: 8px 10px;
+  border-bottom: 2px solid #007bff;
+  position: relative;
+  left:75%;
+  top: -7vh;
+  color: #ffffff;
+}
+.name-label7{
+  position: fixed;
+  left: 25%;
+ // font-weight: bold;
+ top: 53%;
+  color: #fafbfc;
+}
+.form-control7{
+  width: 56%;
+  border: none;
+  background: transparent;
+  padding: 8px 10px;
+  border-bottom: 2px solid #007bff;
+  position: relative;
+  left:-70%;
+  top: -2.9vh;
+  color: #fcfbfb;
+}
+.name-label8{
+  position: fixed;
+  left: 50%;
+ // font-weight: bold;
+ top: 54%;
+  color: #fafbfc;
+}
+.form-control8{
+  width: 50%;
+  border: none;
+  background: transparent;
+  padding: 8px 10px;
+  border-bottom: 2px solid #007bff;
+  position: relative;
+  left:77%;
+  top: -6.5vh;
+  color: #ffffff;
+}
+.name-label9{
+  position: fixed;
+  left: 40%;
+ // font-weight: bold;
+ top: 64%;
+  color: #fafbfc;
+}
+.form-control9{
+  width: 70%;
+  border: none;
+  background: transparent;
+  padding: 8px 10px;
+  border-bottom: 2px solid #007bff;
+  position: relative;
+  left:24%;
+  top: -2vh;
+  color: #ffffff;
+}
+.options{
+  color: #000000;
 }

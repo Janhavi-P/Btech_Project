@@ -1,0 +1,24 @@
+.folder-container {
+    max-width: 800px; /* Adjust the max-width as needed */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 20px; /* Add padding to create space */
+    overflow: auto; /* Add scrollbars if content overflows */
+  }
+  
+  .folder-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px; /* Add space between items */
+    border: 1px solid #ccc; /* Add borders to separate items */
+    padding: 5px; /* Add padding to each item */
+  }
+  
+  .folder-name {
+    flex-grow: 1; /* Make the folder name span fill available space */
+  }
+  
+  .timestamp {
+    margin-left: 10px; /* Add spacing between folder name and timestamp */
+  }
+  

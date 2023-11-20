@@ -1,0 +1,12 @@
+.deletbtn{
+    background: none; /* Remove background color and border */
+    border: none;
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+.deletebtn:hover{
+    cursor: pointer;
+}
+.icon{
+    color: rgb(4, 71, 138); /* Change the color to your desired color */
+    font-size: 24px; /* Adjust the icon size as needed */
+}

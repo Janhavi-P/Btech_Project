@@ -7,6 +7,7 @@ export class Employee {
     contact_no: string | undefined;
     position: string | undefined;
     department: string | undefined;
-    profile: File | undefined; // Use the File type for profile picture
+    profilePicture: File | undefined; // Use the File type for profile picture
+    profilePictureName: string | undefined;
   }
   

@@ -1,0 +1,33 @@
+<div class="legend">
+    <div>Total no of users</div>
+    <div class="total-count">{{ rowData.length }}</div>
+  </div>
+<mat-toolbar color="primary" class="mat-elevation-z6 custom-toolbar">
+  
+    <mat-icon>description</mat-icon>
+    <span>Doc Management System</span>
+    <div class="spacer"></div>
+    <a mat-button class="navbtn1">Docs Analysis</a>
+    <a mat-button class="navbtn2">Users</a>
+    <a mat-button class="navbtn3"></a>
+</mat-toolbar>
+
+<div class="bg">
+    <!-- <div class="legend">Total no of users:</div> -->
+    <ag-grid-angular
+    style= "width:80%;height:95%;position: relative;top: 2%; "
+    class="ag-theme-alpine"
+   
+    [rowData]= "rowData"
+    [columnDefs]= "colDefs"
+    [pagination]= "true"    
+    [paginationPageSize]="paginationPageSize"
+  ></ag-grid-angular>
+ </div>
+
+<!-- <ag-grid-angular
+style="width: 500px; height: 350px;"
+class="ag-theme-alpine"
+[rowData]="rowData"
+[columnDefs]="columnDefs">
+</ag-grid-angular> -->
