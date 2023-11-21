@@ -1,31 +1,63 @@
 
 
     <mat-toolbar color="primary" class="mat-elevation-z6 custom-toolbar">
-        <mat-icon>description</mat-icon>
-        <span>Doc Management System</span>
+      <button class="menubtn"(click)="toggleMenu()"><mat-icon>view_headline</mat-icon></button>
+  <div class="slide-in-menu" [@slideInOut]="menuState">
+    <!-- Icons and Text displayed -->
+    <ng-container *ngIf="menuState === 'in'">
+      
+      <a routerLink="/" class="icon-container"><i class="fa-solid fa-house"></i> Home</a>
+      <a routerLink="/about"class="icon-container2"><i class="fa-solid fa-folder-plus"></i>&nbsp;Create folder</a>
+      <a routerLink="/about"class="icon-container2"><i class="fa-regular fa-clock "></i>&nbsp;Quick access</a>
+      <a routerLink="/about"class="icon-container2-with-icon">	<mat-icon class="sharedicon">folder_shared</mat-icon> Shared with me</a>
+      <a routerLink="/about"class="icon-container2"><i class="fa-solid fa-thumbs-up"></i>&nbsp;Approval requests</a>
+      <a routerLink="/about"class="icon-container2"><i class='fa-solid fa-user'></i> My space</a>
+      <a routerLink="/about"class="icon-container2"><i class="fa-solid fa-chart-line"></i>&nbsp;Document analytics</a>
+      <!-- Add more icons and text as needed -->
+    </ng-container>
+    <!-- Icons only displayed initially -->
+    <ng-container *ngIf="menuState === 'out'" >  
+      <a routerLink="/" matTooltip="home"  class="icon-container"> <i class="fa-solid fa-house"></i></a>
+      <a routerLink="/about"><i class="fa-solid fa-folder-plus"></i></a>
+      <a routerLink="/about"><i class="fa-regular fa-clock "></i></a>
+      <a routerLink="/about"><mat-icon>folder_shared</mat-icon></a>
+      <a routerLink="/about"><i class="fa-solid fa-thumbs-up"></i></a>
+      <a routerLink="/about"> <i class='fa-solid fa-user'></i> </a>
+      <a routerLink="/about">	<i class="fa-solid fa-chart-line"></i></a>
+      <!-- Add more icons as needed -->
+    </ng-container>
+  </div>
+        <div class="navbar-heading">
+          <!-- <div class="logo"></div> -->
+          <i class="fa-solid fa-file-circle-check"></i>
+        
+        <span>&nbsp; Doc Management System</span>  
+      </div>
         <div class="spacer"></div>
-        <a mat-button class="navbtn1">Docs Analysis</a>
-        <a mat-button routerLink="/getusers" class="navbtn2">Users</a>
+        <!-- <a mat-button class="navbtn1">Docs Analysis</a> -->
+        <!-- <a mat-button routerLink="/getusers" class="navbtn2">Users</a> -->
         <!-- <a mat-button class="navbtn3"></a> -->
         <span>{{loggedInUser}}</span>
         <div>
             <button mat-button>
               <img [src]="profilePictureUrl" alt="Profile Picture" class="circular-image" />
             </button>
-            <mat-menu #menu="matMenu">
+            <mat-menu #menu="matMenu" >
               <button mat-menu-item class="edit-profile-button" [routerLink]="['/edit-profile', getLoggedInId()]">
                 Edit Profile
               </button>
-              <button mat-menu-item>Logout</button>
+              <button mat-menu-item class="edit-profile-button2" (click)="logout()">
+                Logout
+              </button>
             </mat-menu>
               
           </div>
-        	<button mat-button [matMenuTriggerFor]="menu"><mat-icon>keyboard_arrow_down</mat-icon></button>
+        	<button mat-button class="arrow" [matMenuTriggerFor]="menu"><mat-icon>keyboard_arrow_down</mat-icon></button>
     </mat-toolbar>
  <div class="bg"></div>
-    <!-- <input type="file" (change)="onFileChanged($event)" multiple/>
+    <input type="file" (change)="onFileChanged($event)" multiple/>
     <button (click)="onUpload()">Upload File</button>
     <p>{{ message }}</p>
     <router-outlet>
     <button (click)="navigateToFileList()">Go to File List</button>
-    </router-outlet>  -->
+    </router-outlet> 

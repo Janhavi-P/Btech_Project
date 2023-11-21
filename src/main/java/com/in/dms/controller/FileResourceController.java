@@ -42,6 +42,7 @@ private FileStorageRepository fileStorageRepository;
 
 
     public static final String DIRECTORY = System.getProperty("user.home") + "/Downloads";
+
     @GetMapping("/count-by-type")
     public ResponseEntity<Map<String, Long>> countFilesByType() {
         List<FileStorage> files = fileStorageRepository.findAll(); // Fetch the data from your repository
@@ -95,18 +96,51 @@ private FileStorageRepository fileStorageRepository;
     }
 
     // Define a method to download files
+//    @GetMapping("download/{filename}")
+//    public ResponseEntity<Resource> downloadFiles(@PathVariable("filename") String filename) throws IOException {
+//        Path filePath = get(DIRECTORY).toAbsolutePath().normalize().resolve(filename);
+//        if(!Files.exists(filePath)) {
+//            throw new FileNotFoundException(filename + " was not found on the server");
+//        }
+//        Resource resource = new UrlResource(filePath.toUri());
+//        HttpHeaders httpHeaders = new HttpHeaders();
+//        httpHeaders.add("File-Name", filename);
+//        httpHeaders.add(CONTENT_DISPOSITION, "attachment;File-Name=" + resource.getFilename());
+//        return ResponseEntity.ok().contentType(MediaType.parseMediaType(Files.probeContentType(filePath)))
+//                .headers(httpHeaders).body(resource);
+//    }
     @GetMapping("download/{filename}")
     public ResponseEntity<Resource> downloadFiles(@PathVariable("filename") String filename) throws IOException {
+        // Extract the original filename without the version number
+        String originalFilename = extractOriginalFilename(filename);
+
         Path filePath = get(DIRECTORY).toAbsolutePath().normalize().resolve(filename);
-        if(!Files.exists(filePath)) {
-            throw new FileNotFoundException(filename + " was not found on the server");
+
+        if (!Files.exists(filePath)) {
+            // Try with the original filename
+            filePath = get(DIRECTORY).toAbsolutePath().normalize().resolve(originalFilename);
+
+            if (!Files.exists(filePath)) {
+                throw new FileNotFoundException(originalFilename + " was not found on the server");
+            }
         }
+
         Resource resource = new UrlResource(filePath.toUri());
+
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add("File-Name", filename);
+        httpHeaders.add("File-Name", originalFilename);
         httpHeaders.add(CONTENT_DISPOSITION, "attachment;File-Name=" + resource.getFilename());
-        return ResponseEntity.ok().contentType(MediaType.parseMediaType(Files.probeContentType(filePath)))
-                .headers(httpHeaders).body(resource);
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType(Files.probeContentType(filePath)))
+                .headers(httpHeaders)
+                .body(resource);
+    }
+
+    private String extractOriginalFilename(String filename) {
+        // Extract the original filename without the version number
+        int indexOfUnderscore = filename.lastIndexOf('_');
+        return (indexOfUnderscore != -1) ? filename.substring(0, indexOfUnderscore) : filename;
     }
     @GetMapping("/getall")
     public ResponseEntity<List<FileStorage>> getAllFiles() {

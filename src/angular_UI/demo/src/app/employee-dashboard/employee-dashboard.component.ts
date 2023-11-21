@@ -1,6 +1,6 @@
-import { Component,OnInit, ViewChild} from '@angular/core';
+import { Component,EventEmitter, OnInit, Output} from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import { Router } from '@angular/router';
+import { Router,NavigationExtras   } from '@angular/router';
 import { FileUploadService } from '../file-upload.service';
 import { LoginempService } from '../loginemp.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
@@ -17,8 +17,23 @@ interface ApiResponse {
   selector: 'app-employee-dashboard',
   templateUrl: './employee-dashboard.component.html',
   styleUrls: ['./employee-dashboard.component.scss'], 
+  animations: [
+    trigger('slideInOut', [
+      state('in', style({ width: '250px' })),
+      state('out', style({ width: '50px' })),
+      transition('in => out, out => in', animate('300ms ease-in-out')),
+    ]),
+  ],
+  
+
 })
 export class EmployeeDashboardComponent implements OnInit {
+  @Output() sideNavToggled = new EventEmitter<boolean>();
+ 
+  menuState: string = 'out';
+  showText: boolean = false; // Flag to control text visibility
+  menuItems: any[] | undefined; // Define your menu items here
+
   //@ViewChild(MatMenuTrigger) menuTrigger: MatMenuTrigger | undefined;
   loggedInUser:string='';
   private loggedInId: number | undefined;
@@ -67,7 +82,7 @@ export class EmployeeDashboardComponent implements OnInit {
     }
     return '';
   }
-
+ 
   onFileChanged(event: Event) {
     const target = event.target as HTMLInputElement | null;
     if (target && target.files) {
@@ -109,7 +124,10 @@ export class EmployeeDashboardComponent implements OnInit {
   }
   logout()
   {
-    console.log('logout');
+    const navigationExtras: NavigationExtras = { skipLocationChange: true };
+    this.router.navigate(['/login'], { replaceUrl: true });
+
+
   }
 getLoggedInId():number | undefined
 {
@@ -120,5 +138,8 @@ navigateToEditProfile() {
   // Navigate to the EditprofileComponent and pass the loggedInId as a route parameter
   this.router.navigate(['/edit-profile', { id: this.loggedInId }]);
 }
+toggleMenu() {
+  this.menuState = this.menuState === 'out' ? 'in' : 'out';
+  console.log('Menu State:', this.menuState);
 }
-
+}

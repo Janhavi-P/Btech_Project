@@ -16,7 +16,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
 import { AdminDBComponent } from './adminDashboard/admin-db.component';
 import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
@@ -74,6 +74,7 @@ MatIconModule,
 MatDialogModule,
 AgGridModule,
 MatMenuModule,
+MatTooltipModule
 
   ],  
   providers: [],

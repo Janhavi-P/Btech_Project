@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'edit-profile/:id', component: EditprofileComponent},
   { path: 'viewanalysis', component: DocanalyticsComponent},
   { path: 'goback', component: EmployeeDashboardComponent},
-
+  { path: 'logout', component: LoginPageComponent},
 ];
 
 @NgModule({
