@@ -8,8 +8,10 @@ import { GetusersComponent } from './getusers/getusers.component';
 import { MaincontentComponent } from './maincontent/maincontent.component';
 import { FilelistComponent } from './filelist/filelist.component';
 import { EditprofileComponent } from './editprofile/editprofile.component';
-import { AdmindocanalysisComponent } from './admindocanalysis/admindocanalysis.component';
 import { DocanalyticsComponent } from './docanalytics/docanalytics.component';
+import { OpenFolderComponent } from './open-folder/open-folder.component';
+import { QuickaccessComponent } from './quickaccess/quickaccess.component';
+import { EmployeeanalyticsComponent } from './employeeanalytics/employeeanalytics.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginPageComponent },
@@ -24,6 +26,10 @@ const routes: Routes = [
   { path: 'viewanalysis', component: DocanalyticsComponent},
   { path: 'goback', component: EmployeeDashboardComponent},
   { path: 'logout', component: LoginPageComponent},
+  { path: 'openfolder/:folderName', component: OpenFolderComponent},
+  { path: 'goback2', component: AdminDBComponent},
+  {path:'quick-access', component: QuickaccessComponent},
+  {path:'employee-analytics', component: EmployeeanalyticsComponent},
 ];
 
 @NgModule({

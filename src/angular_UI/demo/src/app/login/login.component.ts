@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CreateAccService } from '../create-acc.service';
 import { Router } from '@angular/router';
+import { FolderService } from '../folder.service';
 // import { DialogComponent } from '../dialog/dialog.component';
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ employee:Employee=new Employee();
 accountCreated:boolean = false;
 accountAlreadyExists: boolean = false; // Add this line
 otherError = false;
-constructor(private createAccountService:CreateAccService,private snackBar: MatSnackBar,private router: Router){}
+constructor(private createAccountService:CreateAccService,private snackBar: MatSnackBar,private router: Router,private createFolderService:FolderService){}
 ngOninit():void{}
 
 
@@ -31,12 +32,24 @@ ngOninit():void{}
 employeeRegister() {
   this.createAccountService.createAccount(this.employee).subscribe(
     (data: any) => {
+      console.log("data",data);
       this.accountCreated = true;
       this.accountAlreadyExists = false;
       this.otherError = false;
       this.openSnackBar('Account created successfully!', 'Close');
-      this.router.navigate(['/login']);
-      },(error) => {
+
+      const folderData = { folderName: 'default', employeeId: data.employeeid };
+      this.createFolderService.createFolder(folderData).subscribe(
+        () => {
+          this.router.navigate(['/login']);
+        },
+        (error) => {
+          console.error('Error creating default folder:', error);
+          // Handle error in creating default folder
+        }
+      );
+    },
+      (error) => {
         if (error.status === 409) {
           this.accountCreated = false;
           this.accountAlreadyExists = true;

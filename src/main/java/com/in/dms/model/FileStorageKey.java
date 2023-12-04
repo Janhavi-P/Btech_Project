@@ -14,6 +14,7 @@ public class FileStorageKey implements Serializable {
     @Column(name = "Document_id")
     private Long Doc_id;
 
+
     @Column(name = "Version_id")
     private Integer Version_id;
     public FileStorageKey() {

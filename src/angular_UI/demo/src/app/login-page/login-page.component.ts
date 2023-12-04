@@ -6,12 +6,25 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog,MatDialogRef  } from '@angular/material/dialog';
 import { LogindialogComponent } from '../logindialog/logindialog.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.scss']
+  styleUrls: ['./login-page.component.scss'],
+  animations: [
+    trigger('slideIn', [
+      state('void', style({
+        transform: 'translateX(-100%)',
+        opacity: 0
+      })),
+      transition(':enter, :leave', [
+        animate('1s ease-in-out')
+      ])
+    ])
+  ]
 })
+
 export class LoginPageComponent {
   emailId: string = '';
   password: string = '';

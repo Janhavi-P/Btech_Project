@@ -34,7 +34,12 @@ import { MaincontentComponent } from './maincontent/maincontent.component';
 import { FilelistComponent } from './filelist/filelist.component';
 import { DownloadbuttonComponent } from './downloadbutton/downloadbutton.component';
 import { EditprofileComponent } from './editprofile/editprofile.component';
-import { AdmindocanalysisComponent } from './admindocanalysis/admindocanalysis.component';
+import { OpenFolderComponent } from './open-folder/open-folder.component';
+
+import { MatTableModule } from '@angular/material/table';
+import {MatInputModule } from '@angular/material/input';
+import { QuickaccessComponent } from './quickaccess/quickaccess.component';
+import { EmployeeanalyticsComponent } from './employeeanalytics/employeeanalytics.component';
 
 @NgModule({
   declarations: [
@@ -52,10 +57,12 @@ import { AdmindocanalysisComponent } from './admindocanalysis/admindocanalysis.c
           HeaderComponent,
           FolderComponent,
              MaincontentComponent,
-                  FilelistComponent,
+               FilelistComponent,
                   DownloadbuttonComponent,
                   EditprofileComponent,
-                  AdmindocanalysisComponent,
+           OpenFolderComponent,
+           QuickaccessComponent,
+           EmployeeanalyticsComponent,
    
     // DialogComponent
   ],
@@ -74,8 +81,9 @@ MatIconModule,
 MatDialogModule,
 AgGridModule,
 MatMenuModule,
-MatTooltipModule
-
+MatTooltipModule,
+MatTableModule,
+MatInputModule,
   ],  
   providers: [],
   bootstrap: [AppComponent]

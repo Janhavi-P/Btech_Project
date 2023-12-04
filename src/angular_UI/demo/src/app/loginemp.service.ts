@@ -8,6 +8,8 @@ import { Employee } from './employee';
 })
 export class LoginempService {
   private loggedInUser:string='';
+  private userRole: string | undefined;
+
   private loggedInId: number | undefined;
   private profilePictureData: Uint8Array | Blob | null = null; 
   baseUrl = 'http://localhost:8080/api';  
@@ -35,6 +37,9 @@ export class LoginempService {
     console.log("from service",this.profilePictureData);
     return this.profilePictureData;
   }
+  getLoggedInUserRole() {
+    return this.userRole;
+  }
 
   login(username: string, password: string):Observable<any> {
   {
@@ -46,7 +51,8 @@ export class LoginempService {
           this.loggedInUser = response.Name;
           this.profilePictureData = response.ProfilePic; // Store the profile picture data
           this.loggedInId=response.EmployeeId;
-        //  console.log('empid:',this.loggedInId);
+          this.userRole = response.role;
+         console.log('role:',this.userRole);
         }
         return response;
       })

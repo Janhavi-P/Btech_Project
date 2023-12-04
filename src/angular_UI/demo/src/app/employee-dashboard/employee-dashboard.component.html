@@ -1,29 +1,29 @@
 
 
-    <mat-toolbar color="primary" class="mat-elevation-z6 custom-toolbar">
+      <mat-toolbar color="primary" class="mat-elevation-z6 custom-toolbar">
       <button class="menubtn"(click)="toggleMenu()"><mat-icon>view_headline</mat-icon></button>
   <div class="slide-in-menu" [@slideInOut]="menuState">
     <!-- Icons and Text displayed -->
     <ng-container *ngIf="menuState === 'in'">
       
       <a routerLink="/" class="icon-container"><i class="fa-solid fa-house"></i> Home</a>
-      <a routerLink="/about"class="icon-container2"><i class="fa-solid fa-folder-plus"></i>&nbsp;Create folder</a>
-      <a routerLink="/about"class="icon-container2"><i class="fa-regular fa-clock "></i>&nbsp;Quick access</a>
+      <!-- <a routerLink="/about"class="icon-container2"><i class="fa-solid fa-folder-plus"></i>&nbsp;Create folder</a> -->
+      <a routerLink="/quick-access"class="icon-container2"><i class="fa-regular fa-clock "></i>&nbsp;Quick access</a>
       <a routerLink="/about"class="icon-container2-with-icon">	<mat-icon class="sharedicon">folder_shared</mat-icon> Shared with me</a>
       <a routerLink="/about"class="icon-container2"><i class="fa-solid fa-thumbs-up"></i>&nbsp;Approval requests</a>
       <a routerLink="/about"class="icon-container2"><i class='fa-solid fa-user'></i> My space</a>
-      <a routerLink="/about"class="icon-container2"><i class="fa-solid fa-chart-line"></i>&nbsp;Document analytics</a>
+      <a routerLink="/employee-analytics"class="icon-container2"><i class="fa-solid fa-chart-line"></i>&nbsp;Document analytics</a>
       <!-- Add more icons and text as needed -->
     </ng-container>
     <!-- Icons only displayed initially -->
     <ng-container *ngIf="menuState === 'out'" >  
       <a routerLink="/" matTooltip="home"  class="icon-container"> <i class="fa-solid fa-house"></i></a>
-      <a routerLink="/about"><i class="fa-solid fa-folder-plus"></i></a>
-      <a routerLink="/about"><i class="fa-regular fa-clock "></i></a>
-      <a routerLink="/about"><mat-icon>folder_shared</mat-icon></a>
-      <a routerLink="/about"><i class="fa-solid fa-thumbs-up"></i></a>
-      <a routerLink="/about"> <i class='fa-solid fa-user'></i> </a>
-      <a routerLink="/about">	<i class="fa-solid fa-chart-line"></i></a>
+      <!-- <a routerLink="/about" matTooltip="Create folder"><i class="fa-solid fa-folder-plus"></i></a> -->
+      <a routerLink="/quick-access" matTooltip="Quick access"><i class="fa-regular fa-clock "></i></a>
+      <a routerLink="/about" matTooltip="Shared with me"><mat-icon>folder_shared</mat-icon></a>
+      <a routerLink="/about" matTooltip="Aprrovals and requests"><i class="fa-solid fa-thumbs-up"></i></a>
+      <a routerLink="/about" matTooltip="My space"> <i class='fa-solid fa-user'></i> </a>
+      <a routerLink="/employee-analytics" matTooltip="Analytics">	<i class="fa-solid fa-chart-line"></i></a>
       <!-- Add more icons as needed -->
     </ng-container>
   </div>
@@ -54,10 +54,158 @@
           </div>
         	<button mat-button class="arrow" [matMenuTriggerFor]="menu"><mat-icon>keyboard_arrow_down</mat-icon></button>
     </mat-toolbar>
- <div class="bg"></div>
-    <input type="file" (change)="onFileChanged($event)" multiple/>
+   
+ <div class="bg"> <div class="container"  [@shiftContainer]="menuState">
+  <!-- Your transparent mat-card or div goes here -->
+  <mat-card class="transparent-card" *ngIf="!showFirstMatCard">
+    
+  <!-- Card content for the opened folder -->
+  <!-- Add your content for the opened folder mat-card here -->
+</mat-card>
+  <!-- <mat-card class="transparent-card" *ngIf="showFirstMatCard" >
+    <mat-toolbar color="primary" class="mat-elevation-z6 custom-toolbar2">
+      <button mat-raised-button class="add-folder-btn" (click)="addNewFolder()">Add New Folder</button>
+
+      </mat-toolbar> -->
+      <mat-card class="transparent-card" *ngIf="showFirstMatCard" >
+        <!-- Card content -->
+        <div>
+          <mat-toolbar color="primary" class="mat-elevation-z6 custom-toolbar2">
+        <div class="folderheading">
+         
+           <button mat-raised-button class="add-folder-btn" (click)="addNewFolder()">Add New Folder</button> 
+           
+        
+        </div>
+        <div class="search-container">
+          <input  class="search" matInput placeholder="Search by folder name" (keyup)="searchFolders()" [(ngModel)]="searchQuery" />
+          <button mat-icon-button>
+            <mat-icon class="searchicon">search</mat-icon>
+          </button>
+        </div>
+        </mat-toolbar>
+        <!-- <label class="file-input-label" for="fileInput">
+          <i class="fas fa-cloud-upload-alt" (click)="triggerFileInput()"></i> Upload File
+        </label>
+        <input type="file" id="fileInput" (change)="onFileChanged($event)" multiple style="display: none;" />
+        <button mat-button class="uploadbtn" (click)="onUpload()">Submit </button> -->
+        
+        <!-- <p *ngIf="selectedFiles.length > 0">Selected Files:
+        <span *ngFor="let file of selectedFiles">{{ file.name }}, </span>
+        </p>
+        <p *ngIf="selectedFiles.length === 0">No files chosen</p> 
+        <p>{{ message }}</p> -->
+        </div>
+      <mat-table [dataSource]="dataSource" style=" overflow-y: auto;">
+        <!-- Define the columns -->
+        <ng-container matColumnDef="serial">
+          <mat-header-cell *matHeaderCellDef style="max-width: 70px;"> Sr No. </mat-header-cell>
+          <mat-cell  style="max-width: 70px;" *matCellDef="let folder; let i = index">
+            {{ i + 1 }}.
+          </mat-cell>
+        </ng-container>
+
+        <!-- <ng-container matColumnDef="name">
+          <mat-header-cell style="max-width: 300px;" *matHeaderCellDef> Folder Name </mat-header-cell>
+          <mat-cell style="max-width: 300px;" *matCellDef="let folder">
+            <mat-icon class="foldericon">folder</mat-icon>
+            &nbsp;&nbsp;
+            <span *ngIf="folder.isNew; else displayFolderName">
+              <input [(ngModel)]="folder.name" name="folderName" (keyup.enter)="completeNewFolder(folder)">
+            </span>
+            <ng-template #displayFolderName>
+              {{ folder.name }}
+            </ng-template>
+          </mat-cell>
+        </ng-container> -->
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> Folder Name </mat-header-cell>
+          <mat-cell    *matCellDef="let folder" (click)="openfolder(folder.name)"  [ngClass]="{'clickable': folder.isClickable}" >
+            <mat-icon class="foldericon">folder</mat-icon>
+            &nbsp;&nbsp;
+            <!-- <a [routerLink]="['/openfolder', folder.name]"> -->
+            <span *ngIf="folder.isNew; else displayFolderName">
+              <input [(ngModel)]="folder.name" name="folderName" (keyup.enter)="completeNewFolder(folder)" (click)="stopPropagation($event)">
+            </span>
+            <ng-template #displayFolderName>
+              {{ folder.name }}
+            </ng-template>
+          <!-- </a> -->
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="createdTime">
+          <mat-header-cell *matHeaderCellDef  > Created Time </mat-header-cell>
+          <mat-cell  *matCellDef="let folder" (click)="openfolder(folder.name)" > {{ folder.createdTime }} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="type">
+          <mat-header-cell *matHeaderCellDef  > Type </mat-header-cell>
+          <mat-cell  *matCellDef="let folder" (click)="openfolder(folder.name)" > {{ folder.fileType }} </mat-cell>
+        </ng-container>
+        <!-- <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> Folder Name </mat-header-cell>
+          <mat-cell *matCellDef="let folder">
+            <mat-icon class="foldericon">folder</mat-icon>
+            &nbsp;&nbsp;
+            {{ folder.name }} (Created at: {{ folder.createdTime }})
+          </mat-cell>
+        </ng-container> -->
+        <ng-container matColumnDef="actions">
+          <mat-header-cell  *matHeaderCellDef > Actions </mat-header-cell>
+          <mat-cell *matCellDef="let folder" (click)="openfolder(folder.name)" >
+            <!-- Add any actions you want for each folder, e.g., open, delete, etc. -->
+            <button mat-button (click)="openFolder(folder)">Open</button>
+            <button mat-button (click)="deleteFolder(folder)">Delete</button>
+          </mat-cell>
+        </ng-container>
+        <!-- <ng-container matColumnDef="edit">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let folder"> -->
+            <!-- Add the input field for editing the folder name -->
+            <!-- <div *ngIf="folder.isNew; else displayFolderName">
+              <input [(ngModel)]="folder.name" name="folderName" (keyup.enter)="completeNewFolder(folder)">
+            </div>
+            <ng-template #displayFolderName>
+              {{ folder.name }}
+            </ng-template>
+          </mat-cell>
+        </ng-container> -->
+    
+     
+        <!-- Add the column definitions to the mat-table -->
+        <mat-header-row *matHeaderRowDef="['serial','name','createdTime', 'type','actions'];sticky: true " ></mat-header-row>
+        <mat-row *matRowDef="let row; columns: ['serial','name','createdTime','type', 'actions']; " class="folder-row"></mat-row>
+     
+      <!-- Add a button to add a new folder -->
+      <!-- <button mat-raised-button (click)="addFolder()">Add Folder</button> -->
+    <!-- Card content -->
+    <!-- <div>
+    <label class="file-input-label" for="fileInput">
+      <i class="fas fa-cloud-upload-alt" (click)="triggerFileInput()"></i> Upload File
+    </label>
+    <input type="file" id="fileInput" (change)="onFileChanged($event)" multiple style="display: none;" />
+    <button mat-button class="uploadbtn" (click)="onUpload()">Submit </button>
+  </div> -->
+  <!-- <p *ngIf="selectedFiles.length > 0">Selected Files:
+    <span *ngFor="let file of selectedFiles">{{ file.name }}, </span>
+  </p>
+  <p *ngIf="selectedFiles.length === 0">No files chosen</p> 
+    <p>{{ message }}</p> -->
+    <!-- <router-outlet>
+      <button (click)="navigateToFileList()">Go to File List</button>
+    </router-outlet> -->
+
+    <!-- <div class="default-folder" (click)="openfolder()">
+     
+      <mat-icon class="foldericon">folder</mat-icon>
+      <p>Default Folder</p>
+    </div> -->
+  </mat-table>
+  </mat-card>
+</div></div>
+
+    <!-- <input type="file" (change)="onFileChanged($event)" multiple/>
     <button (click)="onUpload()">Upload File</button>
     <p>{{ message }}</p>
     <router-outlet>
     <button (click)="navigateToFileList()">Go to File List</button>
-    </router-outlet> 
+    </router-outlet>  -->
