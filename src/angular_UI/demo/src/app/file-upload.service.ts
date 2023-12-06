@@ -45,4 +45,8 @@ getFileDataByDate(employeeId: number): Observable<any> {
   const url = `${this.baseurl}file-count-by-date/${employeeId}`;
   return this.httpClient.get(url);
 }
+getMemory():Observable<any> {
+  const url = `${this.baseurl}total-memory-used`;
+  return this.httpClient.get(url);
+}
 }

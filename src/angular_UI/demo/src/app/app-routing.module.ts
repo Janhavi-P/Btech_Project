@@ -30,6 +30,8 @@ const routes: Routes = [
   { path: 'goback2', component: AdminDBComponent},
   {path:'quick-access', component: QuickaccessComponent},
   {path:'employee-analytics', component: EmployeeanalyticsComponent},
+  {path:'emp-dashboard',component: EmployeeDashboardComponent},
+  {path:'admin-analytics', component: AdminDBComponent}
 ];
 
 @NgModule({

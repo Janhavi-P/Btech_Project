@@ -31,7 +31,7 @@ class="ag-theme-alpine"
 <!-- Icons and Text displayed -->
 <ng-container *ngIf="menuState === 'in'">
   
-  <a routerLink="/" class="icon-container"><i class="fa-solid fa-house"></i> Home</a>
+  <a routerLink="/admin-analytics" class="icon-container"><i class="fa-solid fa-house"></i> Home</a>
   <a routerLink="/getusers"class="icon-container2"><i class="fa-solid fa-users"></i>&nbsp;View Users</a>
   <!-- <a routerLink="/about"class="icon-container2"><i class="fa-regular fa-clock "></i>&nbsp;Quick access</a>
   <a routerLink="/about"class="icon-container2-with-icon">	<mat-icon class="sharedicon">folder_shared</mat-icon> Shared with me</a>
@@ -42,7 +42,7 @@ class="ag-theme-alpine"
 </ng-container>
 <!-- Icons only displayed initially -->
 <ng-container *ngIf="menuState === 'out'" >  
-  <a routerLink="/" matTooltip="home"  class="icon-container"> <i class="fa-solid fa-house"></i></a>
+  <a routerLink="/admin-analytics" matTooltip="home"  class="icon-container"> <i class="fa-solid fa-house"></i></a>
   <a routerLink="/getusers" matTooltip="View all users"><i class="fa-solid fa-users"></i></a>
   <!-- <a routerLink="/about" matTooltip="Quick access"><i class="fa-regular fa-clock "></i></a>
   <a routerLink="/about" matTooltip="Shared with me"><mat-icon>folder_shared</mat-icon></a>

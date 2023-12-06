@@ -7,6 +7,7 @@ import com.in.dms.repository.FileKeyIDRepo;
 import com.in.dms.repository.FileStorageRepository;
 
 import com.in.dms.repository.FolderRepository;
+import com.in.dms.service.FileService;
 import com.in.dms.service.FolderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -15,6 +16,8 @@ import org.springframework.http.*;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -39,6 +42,9 @@ public class FileResourceController {
     private FileKeyIDRepo filekeyidrepo;
     @Autowired
     private FolderService folderService;
+
+    @Autowired
+    private FileService fileService;
     @Autowired
     private FileStorageRepository fileStorageRepository;
 private FolderRepository folderRepo;
@@ -177,15 +183,15 @@ private FolderRepository folderRepo;
 
     private String determineContentType(String filename) {
         if (filename.endsWith(".pdf")) {
-            return "application/pdf";
+            return "pdf";
         } else if (filename.endsWith(".jpg") || filename.endsWith(".jpeg")) {
             return "image/jpeg";
         } else if (filename.endsWith(".png")) {
             return "image/png";
         } else if (filename.endsWith(".pptx")) {
-            return "application/vnd.openxmlformats-officedocument.presentationml.presentation";
+            return "pptx";
         } else if (filename.endsWith(".docx")) {
-            return "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+            return "docx";
         } else if (filename.endsWith(".csv")||filename.endsWith(".CSV")) {
             return "text/csv";
         } else {
@@ -261,6 +267,31 @@ public ResponseEntity<Map<String, Object>> countFilesByTypeForEmployee(@PathVari
 
     return ResponseEntity.ok().body(responseMap);
 }
+
+@GetMapping("/total-memory-used")
+public ResponseEntity<String> getTotalMemoryUsed() {
+    List<FileStorage> files = fileService.getAllFiles();
+
+    // Calculate the total size of all files
+    long totalSizeInBytes = files.stream()
+            .filter(file -> !"folder".equals(file.getType()))
+            .mapToLong(FileStorage::getSize)
+            .sum();
+
+    System.out.println(totalSizeInBytes);
+    // Convert the total size to GB
+//    double totalSizeInGB = (double) totalSizeInBytes / (1024 * 1024 * 1024);
+//
+//    // Format the result as a string
+//    String result = String.format("Total Memory Used: %.2f GB", totalSizeInGB);
+// Convert the total size to MB
+    double totalSizeInMB = (double) totalSizeInBytes / (1024 * 1024);
+
+// Format the result as a string
+    String result = String.format("Total Memory Used: %.2f MB", totalSizeInMB);
+
+    return ResponseEntity.ok(result);
+}
     @GetMapping("/file-count-by-date/{employeeId}")
     public ResponseEntity<Map<String, Object>> countFilesByDateForEmployee(@PathVariable Integer employeeId) {
         List<Folder> files = folderService.getFoldersByEmployeeId(employeeId);
@@ -292,6 +323,7 @@ public ResponseEntity<Map<String, Object>> countFilesByTypeForEmployee(@PathVari
 
         return ResponseEntity.ok().body(responseMap);
     }
+
 //     Define a method to download files
 //    @GetMapping("download/{filename}")
 //    public ResponseEntity<Resource> downloadFiles(@PathVariable("filename") String filename) throws IOException {

@@ -6,7 +6,7 @@
     <!-- Icons and Text displayed -->
     <ng-container *ngIf="menuState === 'in'">
       
-      <a routerLink="/" class="icon-container"><i class="fa-solid fa-house"></i> Home</a>
+      <a routerLink="/emp-dashboard" class="icon-container"><i class="fa-solid fa-house"></i> Home</a>
       <!-- <a routerLink="/about"class="icon-container2"><i class="fa-solid fa-folder-plus"></i>&nbsp;Create folder</a> -->
       <a routerLink="/quick-access"class="icon-container2"><i class="fa-regular fa-clock "></i>&nbsp;Quick access</a>
       <a routerLink="/about"class="icon-container2-with-icon">	<mat-icon class="sharedicon">folder_shared</mat-icon> Shared with me</a>
@@ -17,7 +17,7 @@
     </ng-container>
     <!-- Icons only displayed initially -->
     <ng-container *ngIf="menuState === 'out'" >  
-      <a routerLink="/" matTooltip="home"  class="icon-container"> <i class="fa-solid fa-house"></i></a>
+      <a routerLink="/emp-dashboard" matTooltip="home"  class="icon-container"> <i class="fa-solid fa-house"></i></a>
       <!-- <a routerLink="/about" matTooltip="Create folder"><i class="fa-solid fa-folder-plus"></i></a> -->
       <a routerLink="/quick-access" matTooltip="Quick access"><i class="fa-regular fa-clock "></i></a>
       <a routerLink="/about" matTooltip="Shared with me"><mat-icon>folder_shared</mat-icon></a>
